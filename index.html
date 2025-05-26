@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Link Extractor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="theme-dark">
+  <div class="header">
+    <h1><i class="fas fa-link header-icon"></i> Video Link Extractor</h1>
+    <div class="header-controls">
+        <button id="toggleThemeBtn" class="btn btn-secondary btn-icon-only" title="Toggle Light/Dark Mode">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div id="inputSection" class="input-section">
+      <h2 class="section-title">Extract Video Links</h2>
+      <p class="section-subtitle">Paste the HTML source of a webpage or upload an HTML file to extract video links.</p>
+
+      <div class="input-group">
+        <textarea id="htmlSourceInput" placeholder="Paste HTML source here..." rows="10"></textarea>
+      </div>
+
+      <div class="or-separator">OR</div>
+
+      <div class="file-input-group">
+        <label for="htmlFileInput" class="btn btn-primary">
+          <i class="fas fa-upload btn-icon"></i> Upload HTML File
+        </label>
+        <input type="file" id="htmlFileInput" accept=".html,.htm" style="display: none;">
+        <span id="fileNameDisplay">No file chosen</span>
+      </div>
+
+      <button id="extractLinksBtn" class="btn btn-success main-action-btn">
+        <i class="fas fa-play-circle btn-icon"></i> Extract Links
+      </button>
+    </div>
+
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+      <div class="spinner"></div>
+      <p>Extracting video links...</p>
+    </div>
+
+    <div id="videoLinksContainer" class="video-links-container" style="display: none;">
+      <div class="controls">
+        <input type="text" id="filterInput" placeholder="Filter by subject or ID..." title="Filter video links">
+        <button id="selectAllBtn" class="btn btn-tertiary" title="Select/Deselect All Videos">
+          <i class="fas fa-check-double btn-icon"></i> Select All
+        </button>
+      </div>
+      <ul id="videoLinksList" class="video-list"></ul>
+      <div class="button-group">
+        <button id="openSelectedBtn" class="btn btn-primary" title="Open Selected Videos in New Tabs">
+          <i class="fas fa-external-link-alt btn-icon"></i> Open Selected
+        </button>
+        <button id="copySelectedUrlBtn" class="btn btn-secondary" title="Copy URLs of Selected Videos">
+          <i class="fas fa-copy btn-icon"></i> Copy Selected URLs
+        </button>
+        <button id="openAllBtn" class="btn btn-primary" title="Open All Videos in New Tabs">
+          <i class="fas fa-external-link-alt btn-icon"></i> Open All Videos
+        </button>
+        <button id="copyAllUrlBtn" class="btn btn-secondary" title="Copy URLs of All Videos">
+          <i class="fas fa-copy btn-icon"></i> Copy All URLs
+        </button>
+        <button id="shareBtn" class="btn btn-tertiary" title="Share All Video Links">
+          <i class="fas fa-share-alt btn-icon"></i> Share Links
+        </button>
+        <button id="exportBtn" class="btn btn-success" title="Export All Video Links as Text or PDF">
+          <i class="fas fa-file-export btn-icon"></i> Export Links
+        </button>
+        <button id="saveListBtn" class="btn btn-info" title="Save Current List of Videos">
+          <i class="fas fa-save btn-icon"></i> Save List
+        </button>
+        <input type="file" id="loadListInput" style="display: none;" accept=".json,.txt">
+        <button id="loadListBtn" class="btn btn-info" title="Load a Previously Saved List of Videos">
+          <i class="fas fa-upload btn-icon"></i> Load List
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Developed By TH</p>
+  </footer>
+  <div id="toastNotification" class="toast-notification"></div>
+  <script src="script.js"></script>
+</body>
+</html>
